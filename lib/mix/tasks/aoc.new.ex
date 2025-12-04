@@ -38,6 +38,7 @@ defmodule Mix.Tasks.Aoc.New do
     lib_file = "lib/day#{day_str}.ex"
     test_file = "test/day#{day_str}_test.exs"
     input_file = "inputs/day#{day_str}.txt"
+    example_file = "inputs/day#{day_str}.example.txt"
 
     if File.exists?(lib_file) do
       Mix.shell().error("#{lib_file} already exists!")
@@ -58,13 +59,18 @@ defmodule Mix.Tasks.Aoc.New do
     File.write!(input_file, "# Paste your puzzle input here\n")
     Mix.shell().info("  Created #{input_file}")
 
+    # Create example input file
+    File.write!(example_file, "# Paste your example input here\n")
+    Mix.shell().info("  Created #{example_file}")
+
     Mix.shell().info("")
     Mix.shell().info("Day #{day_str} template created successfully!")
     Mix.shell().info("")
     Mix.shell().info("Next steps:")
-    Mix.shell().info("  1. Add your puzzle input to #{input_file}")
-    Mix.shell().info("  2. Run: mix test.watch test/day#{day_str}_test.exs")
-    Mix.shell().info("  3. Start solving!")
+    Mix.shell().info("  1. Add your example input to #{example_file}")
+    Mix.shell().info("  2. Add your puzzle input to #{input_file}")
+    Mix.shell().info("  3. Run: mix test.watch test/day#{day_str}_test.exs")
+    Mix.shell().info("  4. Start solving!")
   end
 
   defp solution_template(day_str) do
@@ -117,9 +123,7 @@ defmodule Mix.Tasks.Aoc.New do
       use ExUnit.Case
       doctest AOC.Day#{day_str}
 
-      @example_input \"\"\"
-      \"\"\"
-
+      @example_input File.read!("inputs/day#{day_str}.example.txt")
       @puzzle_input File.read!("inputs/day#{day_str}.txt")
 
       describe "part1/1" do
