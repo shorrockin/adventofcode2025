@@ -8,14 +8,13 @@
 
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
+      let pkgs = nixpkgs.legacyPackages.${system};
+      in {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             elixir
-            elixir_ls  # Language server for editor support
+            elixir-ls # Language server for editor support
+            inotify-tools # Required for mix test.watch file watching
           ];
 
           shellHook = ''
@@ -23,12 +22,12 @@
             echo "Elixir version: $(elixir --version | head -n 1)"
             echo ""
             echo "Available commands:"
+            echo "  mix aoc.new <day>     - Create template files for a new day"
             echo "  mix test              - Run all tests"
             echo "  mix test.watch        - Run tests on file changes"
             echo "  mix test test/dayXX*  - Run specific day's tests"
             echo ""
           '';
         };
-      }
-    );
+      });
 }
