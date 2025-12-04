@@ -1,0 +1,27 @@
+# Elixir
+/_build/
+/deps/
+/*.ez
+erl_crash.dump
+*.beam
+.elixir_ls/
+
+# Mix
+/cover/
+/doc/
+
+# Nix
+result
+result-*
+.direnv/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
