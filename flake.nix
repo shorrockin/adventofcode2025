@@ -1,5 +1,5 @@
 {
-  description = "Advent of Code 2026 - Elixir Solutions";
+  description = "Advent of Code 2025 - Elixir Solutions";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -18,7 +18,7 @@
           ];
 
           shellHook = ''
-            echo "Advent of Code 2026 - Elixir Development Environment"
+            echo "Advent of Code 2025 - Elixir Development Environment"
             echo "Elixir version: $(elixir --version | head -n 1)"
             echo ""
             echo "Available commands:"

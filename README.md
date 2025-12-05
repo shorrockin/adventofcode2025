@@ -1,6 +1,6 @@
-# Advent of Code 2026 - Elixir Solutions
+# Advent of Code 2025 - Elixir Solutions
 
-Solutions for [Advent of Code 2026](https://adventofcode.com/2026) written in Elixir.
+Solutions for [Advent of Code 2025](https://adventofcode.com/2025) written in Elixir.
 
 ## Setup
 
