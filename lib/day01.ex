@@ -1,20 +1,10 @@
 defmodule AOC.Day01 do
-  @moduledoc """
-  Advent of Code 2026 - Day 1
-  """
-
-  @doc """
-  Solves part 1 of the puzzle.
-  """
   def part1(input) do
     input
     |> parse()
     |> solve_part1()
   end
 
-  @doc """
-  Solves part 2 of the puzzle.
-  """
   def part2(input) do
     input
     |> parse()

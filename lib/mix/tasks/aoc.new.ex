@@ -76,22 +76,12 @@ defmodule Mix.Tasks.Aoc.New do
   defp solution_template(day_str) do
     """
     defmodule AOC.Day#{day_str} do
-      @moduledoc \"\"\"
-      Advent of Code 2026 - Day #{String.to_integer(day_str)}
-      \"\"\"
-
-      @doc \"\"\"
-      Solves part 1 of the puzzle.
-      \"\"\"
       def part1(input) do
         input
         |> parse()
         |> solve_part1()
       end
 
-      @doc \"\"\"
-      Solves part 2 of the puzzle.
-      \"\"\"
       def part2(input) do
         input
         |> parse()
@@ -131,26 +121,26 @@ defmodule Mix.Tasks.Aoc.New do
           # assert AOC.Day#{day_str}.part1(@example_input) == expected_result
         end
 
-        @tag :puzzle_input
-        test "puzzle input" do
-          result = AOC.Day#{day_str}.part1(@puzzle_input)
-          IO.puts("Day #{day_str} Part 1: \#{result}")
-          # assert result == expected_result
-        end
+        # @tag :puzzle_input
+        # test "puzzle input" do
+        #   result = AOC.Day#{day_str}.part1(@puzzle_input)
+        #   IO.puts("Day #{day_str} Part 1: \#{result}")
+        #   # assert result == expected_result
+        # end
       end
 
-      describe "part2/1" do
-        test "example input" do
-          # assert AOC.Day#{day_str}.part2(@example_input) == expected_result
-        end
-
-        @tag :puzzle_input
-        test "puzzle input" do
-          result = AOC.Day#{day_str}.part2(@puzzle_input)
-          IO.puts("Day #{day_str} Part 2: \#{result}")
-          # assert result == expected_result
-        end
-      end
+      # describe "part2/1" do
+      #   test "example input" do
+      #     # assert AOC.Day#{day_str}.part2(@example_input) == expected_result
+      #   end
+      #
+      #   @tag :puzzle_input
+      #   test "puzzle input" do
+      #     result = AOC.Day#{day_str}.part2(@puzzle_input)
+      #     IO.puts("Day #{day_str} Part 2: \#{result}")
+      #     # assert result == expected_result
+      #   end
+      # end
     end
     """
   end
