@@ -17,44 +17,32 @@ defmodule AOC.Day06 do
   end
 
   def part2(input) do
-    # extract out the lines, removing the last line which is a 
-    # empty line because we do not want to trim the input
-    lines =
-      input
-      |> String.split("\n", trim: false)
-      |> Enum.drop(-1)
-      |> Enum.map(&String.reverse/1)
-
-    # because we've reversed the logic above we can iterate through
-    # the columns and convert each column into a integer. 
-    # - if the column is empty, this represents a logical break in the operator
-    # - we can convert this to a newline character to split on later
-    # - the output of this will be [[nums for op1], [nums for op2], ...]
-    values =
-      0..(String.length(Enum.at(lines, 0)) - 1)
-      |> Enum.map(fn column ->
-        lines
+    input
+    |> String.split("\n", trim: false)
+    |> Enum.drop(-1)
+    |> Enum.map(&String.reverse/1)
+    |> Enum.map(&String.graphemes/1)
+    |> Enum.zip()
+    |> Enum.map(&Tuple.to_list/1)
+    |> Enum.reject(fn line -> Enum.all?(line, &(&1 == " ")) end)
+    |> Enum.reduce(%{sum: 0, numbers: []}, fn line, acc ->
+      number =
+        line
         |> Enum.drop(-1)
-        |> Enum.map(fn line -> String.at(line, column) end)
         |> Enum.join("")
         |> String.trim()
-      end)
-      |> Enum.map(fn char -> if char == "", do: "\n", else: char end)
-      |> Enum.join(" ")
-      |> String.split("\n", trim: true)
-      |> Enum.map(fn nums ->
-        nums
-        |> String.split(" ", trim: true)
-        |> Enum.map(&String.to_integer/1)
-      end)
+        |> String.to_integer()
 
-    # now that we have the values, we can apply the operators from the last line
-    # and apply the results similar to part 1
-    Enum.at(lines, -1)
-    |> String.split(" ", trim: true)
-    |> Enum.with_index()
-    |> Enum.map(fn {op, index} -> apply_operator(Enum.at(values, index), op) end)
-    |> Enum.sum()
+      case Enum.at(line, -1) do
+        " " ->
+          %{sum: acc.sum, numbers: [number | acc.numbers]}
+
+        operator ->
+          result = apply_operator([number | acc.numbers], operator)
+          %{sum: result + acc.sum, numbers: []}
+      end
+    end)
+    |> Map.get(:sum)
   end
 
   defp apply_operator(nums, "+"), do: Enum.sum(nums)
