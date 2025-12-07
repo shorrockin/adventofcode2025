@@ -48,6 +48,10 @@ defmodule AOC.Grid do
     x >= 0 and x < width and y >= 0 and y < height
   end
 
+  def offset({x, y}, x_offset, y_offset) do
+    {x + x_offset, y + y_offset}
+  end
+
   def cardinal_neighbors({x, y}) do
     [
       {x, y - 1},
