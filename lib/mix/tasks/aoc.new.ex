@@ -82,11 +82,11 @@ defmodule Mix.Tasks.Aoc.New do
         |> solve_part1()
       end
 
-      def part2(input) do
-        input
-        |> parse()
-        |> solve_part2()
-      end
+      # def part2(input) do
+      #   input
+      #   |> parse()
+      #   |> solve_part2()
+      # end
 
       defp parse(input) do
         input
@@ -99,10 +99,10 @@ defmodule Mix.Tasks.Aoc.New do
         0
       end
 
-      defp solve_part2(lines) do
-        # TODO: Implement part 2 solution
-        0
-      end
+      # defp solve_part2(lines) do
+      #   # TODO: Implement part 2 solution
+      #   0
+      # end
     end
     """
   end
@@ -114,11 +114,11 @@ defmodule Mix.Tasks.Aoc.New do
       doctest AOC.Day#{day_str}
 
       @example_input File.read!("inputs/day#{day_str}.example.txt")
-      @puzzle_input File.read!("inputs/day#{day_str}.txt")
+      # @puzzle_input File.read!("inputs/day#{day_str}.txt")
 
       describe "part1/1" do
         test "example input" do
-          # assert AOC.Day#{day_str}.part1(@example_input) == expected_result
+          assert AOC.Day#{day_str}.part1(@example_input) == -1
         end
 
         # @tag :puzzle_input
