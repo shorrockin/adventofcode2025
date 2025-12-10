@@ -5,6 +5,7 @@
 erl_crash.dump
 *.beam
 .elixir_ls/
+HiGHS.log
 
 # Mix
 /cover/

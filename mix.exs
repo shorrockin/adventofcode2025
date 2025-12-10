@@ -27,9 +27,7 @@ defmodule AOC.MixProject do
       # Auto-run tests on file changes
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
       # Pretty test output
-      {:ex_unit_notifier, "~> 1.0", only: :test},
-      # Linear programming
-      {:dantzig, "~> 0.1"}
+      {:ex_unit_notifier, "~> 1.0", only: :test}
     ]
   end
 end

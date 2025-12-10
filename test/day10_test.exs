@@ -21,13 +21,9 @@ defmodule AOC.Day10Test do
       assert AOC.Day10.part2(@example_input) == 33
     end
 
-    # @tag :puzzle_input
-    # @tag timeout: :infinity
-    # test "puzzle input" do
-    #   result = AOC.Day10.part2(@puzzle_input)
-    #   IO.puts("Day 10 Part 2: #{result}")
-    #   IO.puts(" - 16579 is too high")
-    #   # assert result == expected_result
-    # end
+    @tag :puzzle_input
+    test "puzzle input" do
+      assert AOC.Day10.part2(@puzzle_input) == 16386
+    end
   end
 end

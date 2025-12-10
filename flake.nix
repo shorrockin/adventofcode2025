@@ -15,9 +15,11 @@
             elixir
             elixir-ls # Language server for editor support
             inotify-tools # Required for mix test.watch file watching
+            highs # Linear programming solver
           ];
 
           shellHook = ''
+            export HIGHS_PATH="${pkgs.highs}/bin/highs"
             echo "Advent of Code 2025 - Elixir Development Environment"
             echo "Elixir version: $(elixir --version | head -n 1)"
             echo ""
